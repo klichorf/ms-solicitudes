@@ -4,14 +4,12 @@ import {juggler} from '@loopback/repository';
 const config = {
   name: 'db',
   connector: 'mysql',
-  url: '',
-  host: '',
-  port: 3306,
-  user: 'root',
-  password: '',
-  database: 'ms_solicitudes'
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT) || 3306,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 };
-
 // Observe application's life cycle to disconnect the datasource when
 // application is stopped. This allows the application to be shut down
 // gracefully. The `stop()` method is inherited from `juggler.DataSource`.
